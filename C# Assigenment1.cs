@@ -55,7 +55,7 @@
 //Playing with Console App
 //Practice number sizes and ranges
 
-1
+//1
 Console.WriteLine($"The number of bytes of sbyte is {sizeof(sbyte)}, the minimum value is: {sbyte.MinValue}, the maximun value is:{sbyte.MaxValue}");
 Console.WriteLine($"The number of bytes of byte is {sizeof(byte)}, the minimum value is: {byte.MinValue}, the maximun value is:{byte.MaxValue}");
 Console.WriteLine($"The number of bytes of short is {sizeof(short)}, the minimum value is: {short.MinValue}, the maximun value is:{short.MaxValue}");
@@ -132,7 +132,7 @@ Console.WriteLine($"Output: {input} centuries = {years} years = {days} days = {h
 
 //Practice loops and operators
 
-1
+//1
 for (int i = 0; i < 100; i++)
 {
     if (i % 3 == 0 && i % 5 == 0)
@@ -202,7 +202,7 @@ else if (guessedNumber == correctNumber)
 }
 
 
-4
+//4
 String bday = "2000/01/01";
 String[] str = bday.Split("/");
 int year = Int32.Parse(str[0]);
@@ -231,7 +231,7 @@ else
 
 Console.WriteLine(days);
 
-5
+//5
 DateTimeOffset thisDate2 = DateTime.Now;
 Console.WriteLine("The current date and time: {0:MM/dd/yy H:mm:ss zzz}",
                    thisDate2);
