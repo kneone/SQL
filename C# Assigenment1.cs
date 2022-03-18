@@ -203,7 +203,33 @@ Console.WriteLine(b);
 
 
 //4
+//String bday = "2000/01/01";
+//String[] str = bday.Split("/");
+//int year = Int32.Parse(str[0]);
+//int month = Int32.Parse(str[1]);
+//int day = Int32.Parse(str[2]);
+//int days = 0;
+//days = days + (2022 - year) * 365;
 
+//if (month < 3)
+//{
+//    days = days + (3 - month) * 30;
+//}
+//else if (month > 3)
+//{
+//    days = days - (month - 3) * 30;
+//}
+
+//if (day < 17)
+//{
+//    days = days + (17 - day);
+//}
+//else
+//{
+//    days = days - (day - 17);
+//}
+
+//Console.WriteLine(days); 
 //5
 //DateTimeOffset thisDate2 = DateTime.Now;
 //Console.WriteLine("The current date and time: {0:MM/dd/yy H:mm:ss zzz}",
