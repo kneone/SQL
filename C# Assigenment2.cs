@@ -357,11 +357,27 @@ string input = Console.ReadLine();
 Console.WriteLine(String.Join(" ", input.Split('.', ' ').Reverse()).ToString());
 
 //3
-Console.WriteLine("Enter a sentence:");
-string input = Console.ReadLine();
-char[] temp = input.ToCharArray();
-Array.Reverse(temp);
-string result = new string(temp);
+Console.WriteLine("Question 3 Entry Array:");
+string str = Console.ReadLine();
+char[] protocol = { '.', ',', ':', ';', '=', '(', ')', '&', '[', ']', '\"', '\'', '\\', '/', '!', '?', ' ', '\t', '\0' };
+string[] splitinp = str.Split(protocol);
+string[] result = new string[0];
+foreach (string s in splitinp)
+{
+    if (s.SequenceEqual(s.Reverse()) == true)
+    {
+        Array.Resize(ref result, result.Length + 1);
+        result[result.Length - 1] = s;
+    }
+
+}
+
+Array.Sort(result, StringComparer.InvariantCulture);
+foreach (string s in result)
+{
+    Console.Write(s + ", ");
+}
+Console.WriteLine(" ");
 
 //4
 Console.WriteLine("Question 4 Enter URL:");
