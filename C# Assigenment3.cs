@@ -80,3 +80,430 @@
 
 //23.True/False.A class can implement more than one interface
 //    True
+
+
+//Designing and Building Classes using object-oriented principles
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person test = new Person();
+            test.addAddress("1010 W University Ave");
+
+            //test.getAddress();
+            List<String> add = test.getAddress();
+            //Console.WriteLine(add[0]);
+
+            Student student = new Student();
+            //Person test = new Person();
+            student.addAddress("1010 W University Ave");
+
+            //test.getAddress();
+            List<String> add2 = student.getAddress();
+            int age = student.calcAge("2000/01/01");
+            Console.WriteLine(age);
+            //Console.WriteLine(student.calcSalary(false));
+
+            Instructor instructor = new Instructor();
+            instructor.addAddress("1010 W Univeraawefawefsity Ave");
+            List<String> add3 = instructor.getAddress();
+            Console.WriteLine(add3[0]);
+        }
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal class Course : ICourseService
+    {
+        List<Student> students = new List<Student>();
+
+        public void addStudent(Student a)
+        {
+            students.Add(a);
+        }
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal class Department : IDepartmentService
+    {
+        Instructor head;
+        String schoolYear;
+        double budget;
+        List<Course> courses = new List<Course>();
+
+        private void addCourse(Course course)
+        {
+            courses.Add(course);
+        }
+
+        public void getCourse()
+        {
+            courses.ToString();
+        }
+
+        private void setHead(Instructor instructor)
+        {
+            head = instructor;
+        }
+
+        public Instructor getHead()
+        {
+            return head;
+        }
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal interface ICourseService
+    {
+        void addStudent(Student a);
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal class Instructor : Person 
+    {
+        string department;
+        bool isHead;
+        int year_of_experience;
+
+        public void setDepartment(String department)
+        {
+            this.department = department;
+        }
+
+        public string getDepartment()
+        {
+            return department;
+        }
+
+        public void setHead(bool isHead)
+        {
+            isHead = isHead;
+        }
+
+        public bool getHead()
+        {
+            return isHead;
+        }
+
+        public int calcExperience(String joinDate)
+        {
+            String[] str = joinDate.Split("/");
+            int year = Int32.Parse(str[0]);
+            int month = Int32.Parse(str[1]);
+            int day = Int32.Parse(str[2]);
+
+            int age = 2022 - year;
+            if (month > 3)
+            {
+                age -= 1;
+            }
+            this.year_of_experience = age;
+            return age;
+        }
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal interface IDepartmentService
+    {
+        //void addCourse(Course course);
+        void getCourse();
+        //void setHead(Instructor instructor);
+        Instructor getHead();
+
+
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal interface IPersonService
+    {
+        int calcAge(String bday);
+        decimal calcSalary(bool isHead);
+        void addAddress(String address);
+        List<String> getAddress();
+
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal interface IStudentService : IPersonService
+    {
+        void addCourse(Course course, String grade);
+        double calcGPA();
+
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal class Person : IPersonService
+    {
+        
+        List<String> Address = new List<String>();
+        decimal salary;
+        public int calcAge(String bday) {
+            //String bday takes format YYYY/MM/DD
+            String[] str = bday.Split("/");
+            int year = Int32.Parse(str[0]);
+            int month = Int32.Parse(str[1]);
+            int day = Int32.Parse(str[2]);
+
+            int age = 2022 - year;
+            if (month > 3)
+            {
+               age -=1 ;
+            }
+            return age;
+        }
+
+        public decimal calcSalary(bool isHead)
+        {
+            
+            if (isHead)
+            {
+                salary = 8000.00m;
+            }
+            else
+            {
+                salary = 8000.00m;
+            }
+
+            return salary;
+        }
+
+        public void addAddress(String address)
+        {
+            Address.Add(address);
+        }
+
+        public List<String> getAddress()
+        {
+            return Address;
+        }
+    }
+}
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Person test = new Person();
+            test.addAddress("1010 W University Ave");
+
+            //test.getAddress();
+            List<String> add = test.getAddress();
+            //Console.WriteLine(add[0]);
+
+            Student student = new Student();
+            //Person test = new Person();
+            student.addAddress("1010 W University Ave");
+
+            //test.getAddress();
+            List<String> add2 = student.getAddress();
+            int age = student.calcAge("2000/01/01");
+            Console.WriteLine(age);
+            //Console.WriteLine(student.calcSalary(false));
+
+            Instructor instructor = new Instructor();
+            instructor.addAddress("1010 W Univeraawefawefsity Ave");
+            List<String> add3 = instructor.getAddress();
+            Console.WriteLine(add3[0]);
+        }
+    }
+}
+
+namespace ConsoleApp4
+{
+    internal class Student : Person
+    {
+        List<Course> courses = new List<Course>();
+        List<string> grades = new List<string>();
+        double GPA;
+
+        public void addCourse(Course course, String grade)
+        {
+            courses.Add(course);
+            grades.Add(grade);
+        }
+
+        public double calcGPA()
+        {
+            double sum = 0;
+            foreach (string grade in grades)
+            {
+                if(grade == "A")
+                {
+                    sum += 4.0;
+                }else if(grade == "B")
+                {
+                    sum += 3.0;
+                }else if(grade == "C")
+                {
+                    sum += 2.0;
+                }else if(grade == "D")
+                {
+                    sum += 1.0;
+                }
+            }
+
+            GPA = sum/grades.Count;
+            return GPA;
+        }
+
+        public decimal calcSalary(bool isHead)
+        {
+            return 0m;
+        }
+    }
+}
+
+
+//7.Try creating the two classes below, and make asimple program to work with them, asdescribed below
+namespace ConsoleApp5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Ball red = new Ball(new Color(255, 51, 51), 50);
+            red.Throw();
+            Console.WriteLine(red.TimesThrow());
+
+            Ball purple = new Ball(new Color(204, 204, 255), 100);
+            purple.Throw();
+            Console.WriteLine(purple.TimesThrow());
+            purple.Pop();
+            Console.WriteLine(purple.TimesThrow());
+            purple.Throw();
+            Console.WriteLine(purple.TimesThrow());
+            purple.Throw();
+            purple.Throw();
+            Console.WriteLine(purple.TimesThrow());
+        }
+    }
+}
+
+// color method
+namespace ConsoleApp5
+{
+    internal class Color
+    {
+        private byte red;
+        private byte green;
+        private byte blue;
+        private byte alpha;
+
+        public Color(byte red, byte green, byte blue, byte alpha)
+        {
+            this.red = red;
+            this.green = green;
+            this.blue = blue;
+            this.alpha = alpha;
+        }
+        public Color(byte red, byte green, byte blue)
+        {
+            this.red = red;
+            this.green = green;
+            this.blue = blue;
+            this.alpha = 255;
+        }
+        public byte getRed()
+        {
+            return red;
+        }
+        public byte getGreen()
+        {
+            return green;
+        }
+
+        public byte getBlue()
+        {
+            return blue;
+        }
+
+        public byte getAlpha()
+        {
+            return alpha;
+        }
+        public void setRed(byte red)
+        {
+            this.red = red;
+        }
+
+        public void setGreen(byte green)
+        {
+            this.green=green;
+        }
+        public void setBlue(byte blue )
+        {
+            this.blue = blue;
+        }
+        public void setAlpha(byte alpha)
+        {
+            this.alpha = alpha;
+        }
+        public byte getGraySclae()
+        {
+            byte result = (byte)((red + green + blue) / 3);
+            return result;
+        }
+        
+    }
+}
+
+// ball methods
+namespace ConsoleApp5
+{
+    internal class Ball
+    {
+        private Color color;
+        private int size;
+        private int times;
+        
+        public Ball(Color color, int size)
+        {
+            this.color = color;
+            this.size = size;
+            this.times = 0;
+        }
+        public void Pop()
+        {
+            size = 0;
+        }
+        public void Throw() 
+        {
+
+            if (size > 0)
+            {
+                times++;
+            }
+
+        }
+
+        public int TimesThrow()
+        {
+            //Console.WriteLine();
+            //Console.WriteLine(color + " ball has been thrown " + times +" times");
+            return times;
+             
+        }
+    }
+}
+
+
+
