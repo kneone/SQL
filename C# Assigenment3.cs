@@ -82,6 +82,81 @@
 //    True
 
 
+//Working with methods
+//1.Let’s make a program that uses methods to accomplisha task. Let’s take an array andreverse the contents of i
+static void Main(string[] ars)
+{
+    int[] numbers = GenerateNumbers(10);
+    Reverse(numbers);
+    PrintNumbers(numbers);
+}
+
+static int[] GenerateNumbers(int num)
+{
+    int[] arr = new int[num];
+    Random rand = new Random();
+    for (int i = 0; i < num; i++)
+    {
+        arr[i] = rand.Next(0, 100);
+    }
+    Console.WriteLine("before");
+    foreach (int s in arr)
+    {
+        Console.Write(s + ", ");
+    }
+    Console.WriteLine();
+    return arr;
+
+}
+static int[] Reverse(int[] arr)
+{
+    int temp;
+    for (int i = 0; i < arr.Length / 2; i++)
+    {
+        temp = arr[i];
+        arr[i] = arr[arr.Length - i - 1];
+        arr[arr.Length - i - 1] = temp;
+    }
+    return arr;
+}
+static void PrintNumbers(int[] arr)
+{
+    Console.WriteLine("after");
+    foreach (int s in arr)
+    {
+        Console.Write(s + ", ");
+    }
+}
+
+
+//2.The Fibonacci sequence
+namespace ConsoleApp3
+{
+    public class Class1
+    {
+        static void Main(string[] ars)
+        {
+            Console.Write("Enter a number: ");
+            int num = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("The Fibonacci of "+ num+" term is "+ Fibonacci(num));
+
+        }
+        static int Fibonacci(int num)
+        {
+           
+            if (num <= 2)
+            {
+                return 1;
+            }
+
+            else
+            {
+                return Fibonacci(num - 1) + Fibonacci(num - 2);
+            }
+        }
+    }
+}
+
 //Designing and Building Classes using object-oriented principles
 namespace ConsoleApp4
 {
