@@ -7,26 +7,26 @@
 //1.What type would you choose for the following “numbers”? 
 //A person’s telephone number: 
 //	Srting
-//A person’s height:byte
-//	Int	
-//A person’s age: byte
-//	Int	
+//A person’s height:
+//	byte
+//A person’s age: 
+//	byte
 //A person’s gender (Male, Female, Prefer Not To Answer): 
 //	String	
-//A person’s salary: double
-//	Decimal	
-//A book’s ISBN: string
-
-//A book’s price: double
-
-//A book’s shipping weight: double
-
-//A country’s population: uint
-
-//The number of stars in the universe: ulong
-
-//The number of employees in each of the small or medium businesses in the United Kingdom (up to about 50,000 employees per business): ushort
-
+//A person’s salary: 
+//	decimal	
+//A book’s ISBN: 
+// string
+//A book’s price: 
+// decimal
+//A book’s shipping weight: 
+// uint
+//A country’s population:
+// uint
+//The number of stars in the universe: 
+// ulong
+//The number of employees in each of the small or medium businesses in the United Kingdom (up to about 50,000 employees per business): 
+// ushort
 
 //2.What are the differences between value type and reference type variables?
 
